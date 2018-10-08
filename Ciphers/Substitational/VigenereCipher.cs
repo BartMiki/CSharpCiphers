@@ -58,6 +58,7 @@ namespace Ciphers.Substitational
 
         public string Decrypt(string encrypted)
         {
+            var tokens = encrypted.Split(new[] { Environment.NewLine, "\t"},StringSplitOptions.RemoveEmptyEntries);
             string key = RepeatKey(encrypted.Length);
             var builder = new StringBuilder();
             for (int i = 0; i < encrypted.Length; i++)
