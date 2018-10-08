@@ -1,0 +1,82 @@
+﻿<Window x:Class="DesktopClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopClient"
+        mc:Ignorable="d"
+        Title="Szyfr Vigenere'a">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="_Plik">
+                <MenuItem Header="Wczytaj tekst jawny"
+                          Click="LoadPlainTextButton_Click"/>
+                <MenuItem Header="Wczytaj text zaszyfrowany"
+                          Click="LoadEncryptedTextButton_Click"/>
+                <MenuItem Header="Zapisz tekst jawny"
+                          Click="SavePlainTextButton_Click"/>
+                <MenuItem Header="Zapisz tekst szyfrowany"
+                          Click="SaveEncryptedTextButton_Click"/>
+            </MenuItem>
+            <MenuItem x:Name="ClearAllButton" Header="Wyczyść" 
+                      Click="ClearAllButton_Click"/>
+            <MenuItem x:Name="HelpButton" Header="Pomoc"
+                      Click="HelpButton_Click"/>
+        </Menu>
+        <StackPanel Grid.Column="0" Grid.Row="1" 
+                    Orientation="Horizontal">
+            <Label Content="Klucz:" VerticalAlignment="Center"
+                   Margin="0,5"/>
+            <TextBox x:Name="KeyTextBox" Width="300"
+                     VerticalContentAlignment="Center"
+                     Margin="0,5"/>
+        </StackPanel>
+        <TextBlock x:Name="ErrorMessageTextBlock" Grid.Row="1"
+                   Grid.Column="1" Margin="5" VerticalAlignment="Center"
+                   Foreground="Red"/>
+        <TextBox x:Name="PlainTextBox" Grid.Column="0"
+                 Grid.Row="2" Margin="5" AcceptsReturn="True"
+                 TextWrapping="WrapWithOverflow"
+                 HorizontalScrollBarVisibility="Auto"
+                 />
+        <TextBox x:Name="EncryptedTextBox" Grid.Column="1"
+                 Grid.Row="2" Margin="5" AcceptsReturn="True"
+                 TextWrapping="WrapWithOverflow"
+                 HorizontalScrollBarVisibility="Auto"
+                 />
+        <StackPanel Grid.Column="0" Grid.Row="3"
+                    Orientation="Horizontal">
+            <Button x:Name="EncryptButton" Content="Szyfruj"
+                    Margin="5" Padding="40,0"
+                    Click="EncryptButton_Click"/>
+            <Button x:Name="SavePlainTextButton" 
+                    Content="Zapisz" Margin="5" Padding="10,0"
+                    Click="SavePlainTextButton_Click"/>
+            <Button x:Name="LoadPlainTextButton" 
+                    Content="Wczytaj" Margin="5" Padding="10,0"
+                    Click="LoadPlainTextButton_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="3"
+                    Orientation="Horizontal">
+            <Button x:Name="DecryptButton" Content="Odszyfruj"
+                    Margin="5" Padding="40,0"
+                    Click="DecryptButton_Click"/>
+            <Button x:Name="SaveEncryptedTextButton" 
+                    Content="Zapisz" Margin="5" Padding="10,0"
+                    Click="SaveEncryptedTextButton_Click"/>
+            <Button x:Name="LoadEncryptedTextButton" 
+                    Content="Wczytaj" Margin="5" Padding="10,0"
+                    Click="LoadEncryptedTextButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
